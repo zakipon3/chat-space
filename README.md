@@ -9,7 +9,7 @@
 |password|string|check: (password > 8 )|
 
 ### Association
-- has many :groups_users
+- has many :groups,  through:  :groups_users
 - has many :messages
 
 ## groupsテーブル
@@ -19,7 +19,7 @@
 |name|string|null: false|
 
 ### Association
-- has many :groups_users
+- has many :users,  through:  :groups_users
 - has many :messages
 
 ## groups_usersテーブル
@@ -37,8 +37,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
-|image|string|null: false|
+|body|text||
+|image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
