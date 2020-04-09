@@ -9,6 +9,7 @@
 |password|string|check: (password > 8 )|
 
 ### Association
+- has many :groups_users
 - has many :groups,  through:  :groups_users
 - has many :messages
 
@@ -19,6 +20,7 @@
 |name|string|null: false|
 
 ### Association
+- has many :groups_users
 - has many :users,  through:  :groups_users
 - has many :messages
 
