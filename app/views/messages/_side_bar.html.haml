@@ -1,0 +1,19 @@
+.side-bar
+  .side-bar__header
+    .user
+      %p.user--name masa
+      .user__icon
+        = link_to "#", class: "far fa-edit" do
+          = icon("far", "fa-edit")
+        = link_to "#", class: "fas fa-cog" do
+          = icon("fas", "fa-cog")
+  .side-bar__list
+    = link_to '#', class: "group" do
+      %p.group-name techcamp
+      %p.text-message まだメッセージはありません
+    = link_to '#', class: "group" do
+      %p.group-name html
+      %p.text-message まだメッセージはありません
+    = link_to '#', class: "group" do
+      %p.group-name ruby
+      %p.text-message まだメッセージはありません
