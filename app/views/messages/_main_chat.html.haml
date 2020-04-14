@@ -1,0 +1,35 @@
+.main
+  .main__header
+    .header-left
+      .group__name techcamp
+      %ul.member-list
+        Member :
+        %li.list
+          masa
+    %input(type="button" class="btn" value="Edit")
+
+  .main__chatspace
+    .message
+      .message-info
+        %p.user aaa
+        %p.date 2020/04/12
+      %p.text testtest
+    .message
+      .message-info
+        %p.user aaa
+        %p.date 2020/04/12
+      %p.text testtest
+    .message
+      .message-info
+        %p.user aaa
+        %p.date 2020/04/12
+      %p.text testtest
+
+  .main__footer
+    .form
+      %input(class="input" type="text" valus="#" placeholder="type a message")/
+      .image
+        %label{class: "input-box__image"}
+          = icon('far', 'image')
+          %input{type: "file"}
+    %input(type="button" class="btn" value="Send")
