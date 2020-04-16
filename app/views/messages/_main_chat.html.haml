@@ -9,27 +9,16 @@
     %input(type="button" class="btn" value="Edit")
 
   .main__chatspace
-    .message
-      .message-info
-        %p.user aaa
-        %p.date 2020/04/12
       %p.text testtest
-    .message
-      .message-info
-        %p.user aaa
-        %p.date 2020/04/12
-      %p.text testtest
-    .message
-      .message-info
-        %p.user aaa
-        %p.date 2020/04/12
-      %p.text testtest
+    = render @messages
 
   .main__footer
     .form
-      %input(class="input" type="text" valus="#" placeholder="type a message")/
-      .image
-        %label{class: "input-box__image"}
-          = icon('far', 'image')
-          %input{type: "file"}
-    %input(type="button" class="btn" value="Send")
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'text', placeholder: 'type a message'
+        .image
+          = f.label :image, class: 'image-add' do
+            = icon('fas', 'image')
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'btn'
+
