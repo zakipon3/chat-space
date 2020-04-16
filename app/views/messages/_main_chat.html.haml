@@ -1,11 +1,13 @@
 .main
   .main__header
     .header-left
-      .group__name techcamp
+      .group__name
+        = @group.name
       %ul.member-list
         Member :
         %li.list
-          masa
+        - @groups_users.each do |groups_user|
+          = groups_user.name
     %input(type="button" class="btn" value="Edit")
 
   .main__chatspace
