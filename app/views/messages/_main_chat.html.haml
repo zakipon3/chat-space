@@ -8,7 +8,7 @@
         %li.list
         - @groups_users.each do |groups_user|
           = groups_user.name
-    %input(type="button" class="btn" value="Edit")
+    = link_to "Edit", edit_group_path(params[:group_id]), method: :get
 
   .main__chatspace
     = render @messages
