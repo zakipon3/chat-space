@@ -2,7 +2,7 @@ $(function(){
 
   function buildHTML(message){
     if (message.image){
-      var html = `<div class="message">
+      var html = `<div class="message" data-message-id=${message.id}>
                     <div class="message-info">
                       <div class="user">
                         ${message.user_name}
@@ -20,7 +20,7 @@ $(function(){
                   </div>`
       return html;
     } else {
-      var html = `<div class="message">
+      var html = `<div class="message" data-message-id=${message.id}>
                     <div class="message-info">
                       <div class="user">
                         ${message.user_name}
@@ -63,4 +63,31 @@ $(function(){
       $(".btn").removeAttr("disabled");
     })
   })
+
+  var reloadMessages = function() {
+    var last_message_id = $('.message:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      if (messages.length !== 0) {
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+        console.log(insertHTML);
+  });
+      $('.main__chatspace').append(insertHTML);
+      $('.main__chatspace').animate({ scrollTop: $('.main__chatspace')[0].scrollHeight});
+      }
+    })
+    .fail(function() {
+      alert('error');
+    });
+  };
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
